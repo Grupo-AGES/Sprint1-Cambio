@@ -1,14 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato');
 
 
+
 :root{
     --white: #fff;
-    --dark1: #5858f5;
-    --dark2: #0128b6;
-    --dark3: #1B2223;
-    --dark4: #3A4F50;
-    --dark5: #cbdad5;
-    --dark6: #3737b8;
+    --purple: #5858f5;
+    --blue1: #0128b6;
+    --dark1: #1B2223;
+    --gray: #3A4F50;
+    --blue2: #3737b8;
     --cyan1: #0EF6CC;
 }
+
+
+body{
+    background-color: var(--gray);
+    height: 100vh;
+    font-family: 'Lato';
+    font-size: 30px;
+}
+
+.img-header{
+    display: grid;
+    place-items: center;
+}
+
+.body{
+    display: grid;
+    place-items: center;
+}
+
+.menu{
+    display: grid;
+    place-items: center;
+}
+
+
+.img-logo{
+    display: flex;
+    max-width: 220px;
+    height: 100%;
+    align-items: center;
+}
+
+
 
