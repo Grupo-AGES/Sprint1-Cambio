@@ -1,0 +1,25 @@
+{
+  "name": "sprint1-cambio",
+  "version": "1.0.0",
+  "description": "Conversor de moedas usando html, css e javascript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grupo-AGES/Sprint1-Cambio.git"
+  },
+  "keywords": [
+    "currency",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Squad2 AGES PUCRS (Killian Domingues, Matheus Da Silva, Matheus Pacheco, Oliver Cowley e Yuri Lima)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grupo-AGES/Sprint1-Cambio/issues"
+  },
+  "homepage": "https://github.com/Grupo-AGES/Sprint1-Cambio#readme"
+}
