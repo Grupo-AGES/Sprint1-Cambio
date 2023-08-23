@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato');
 
-
-
 :root{
     --white: #fff;
     --purple: #5858f5;
@@ -16,8 +14,6 @@
 body{
     background-color: var(--gray);
     height: 100vh;
-    font-family: 'Lato';
-    font-size: 30px;
 }
 
 .img-header{
@@ -26,15 +22,45 @@ body{
 }
 
 .body{
+    font-family: 'Lato';
+    font-size: 30px;
     display: grid;
     place-items: center;
 }
 
-.menu{
+.valor{
+    font-family: 'Lato';
     display: grid;
     place-items: center;
 }
+input[type="text"] {
+    width: 300px; /* Defina o valor desejado para a largura */
+  }  
 
+.menu1{
+    font-family: 'Lato';
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+}
+
+select {
+    width: 300px; /* Defina o valor desejado para a largura */
+  }
+
+.menu2{
+    font-family: 'Lato';
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+}
+
+.button{
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    
+}
 
 .img-logo{
     display: flex;
