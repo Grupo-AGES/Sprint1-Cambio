@@ -4,7 +4,8 @@
   "description": "Conversor de moedas usando html, css e javascript",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Grupo-AGES/Sprint1-Cambio/issues"
   },
-  "homepage": "https://github.com/Grupo-AGES/Sprint1-Cambio#readme"
+  "homepage": "https://github.com/Grupo-AGES/Sprint1-Cambio#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
