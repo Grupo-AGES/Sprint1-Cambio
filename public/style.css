@@ -10,10 +10,45 @@
     --cyan1: #0EF6CC;
 }
 
+#toggle-mode {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#toggle-mode:hover {
+    background-color: #555;
+}
+
+#toggle-icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+body.light-mode {
+    background-color: white;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
 
 body{
-    background-color: var(--gray);
+    background-color: var(--white);
     height: 100vh;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .img-header{
@@ -26,15 +61,19 @@ body{
     font-size: 30px;
     display: grid;
     place-items: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .valor{
     font-family: 'Lato';
     display: grid;
     place-items: center;
+    
 }
 input[type="text"] {
     width: 300px; /* Defina o valor desejado para a largura */
+    height: 40px;
+    border-radius: 20px;
   }  
 
 .menu1{
@@ -42,10 +81,15 @@ input[type="text"] {
     display: grid;
     place-items: center;
     font-size: 20px;
+    margin: 10px;
+    border-radius: 20px;
 }
 
 select {
     width: 300px; /* Defina o valor desejado para a largura */
+    height: 40px;
+    margin: 10px;
+    border-radius: 20px;
   }
 
 .menu2{
@@ -55,11 +99,12 @@ select {
     font-size: 20px;
 }
 
-.button{
+.convert{
     display: grid;
     place-items: center;
     border-radius: 20px;
-    
+    padding: 15px 30px;
+    font-size: 18px; 
 }
 
 .img-logo{
