@@ -17,23 +17,34 @@
         <p>Select the currency a converter</p>
     </div>
     <div class="valor">
-        <input type="text" placeholder="Valor a converter">
+        <input type="text" id="valor" placeholder="Valor a converter">
     </div>
     <div class="menu1">
         <label for="coins">Converter de:</label>
         <select id="coinSelect">
             <option value="" selected disabled>Selecione uma moeda</option>
+            <option value="USD">Dolar Americano</option>
+            <option value="BRL">Real Brasileiro</option>
+            <option value="EUR">Euro</option>
+            <option value="CAD">Dolar Canadense</option>
         </select>
     </div>
     <div class="menu2">
         <label for="coins">Para:</label>
         <select id="coinInSelect">
             <option value="" selected disabled>Selecione uma moeda</option>
+            <option value="USD">Dolar Americano</option>
+            <option value="BRL">Real Brasileiro</option>
+            <option value="EUR">Euro</option>
+            <option value="CAD">Dolar Canadense</option>
         </select>
     </div>
     <div class="button">
         <button>Converter</button>
     </div>
-    <script src="/script.js"></script>
+    <div class="result">
+        <input type="text">
+    </div>
+    <script src="/public/script/script.js"></script>
 </body>
 </html>
