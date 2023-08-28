@@ -33,16 +33,18 @@
     font-size: 16px;
 }
 
-body.light-mode {
-    background-color: white;
-    color: black;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+body {
+    transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-mode {
-    background-color: #121212;
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode {
+    background-color: #1a1a1a;
     color: white;
-    text-shadow: 2px 2px 4px rgb(255, 255, 255);
 }
 
 body{
