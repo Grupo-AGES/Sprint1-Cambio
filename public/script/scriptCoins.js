@@ -10,6 +10,9 @@ let coinInSelect = document.getElementById("coinInSelect");
 //Seleciona o botao de converter do HTML
 let botaoC = document.getElementById("converter");
 
+//Seleciona div do resultado no HTML
+let resultadoDisplay = document.getElementById("resultadoDisplay");
+
 //pegando o valor de mudanca dos selects de moedas e criando url da api
 function mudancaSelects() {
     const selectedCoin = coinSelect.value;
@@ -30,6 +33,8 @@ axios.get(apiUrl)
             const cotacao = data[currencyPair]['bid'];
             const dia = data[currencyPair]['create_date'];
             const resultado =cotacao*valorInput;
+
+            resultadoDisplay.textContent = `Par: ${currencyPair}, Cotacao: ${cotacao}, Data: ${dia}. Resultado: ${resultado}`;
             console.log(`Currency Pair: ${currencyPair}, Cotacao: ${cotacao}, Dia: ${dia}`);
             console.log("O resultado: "+ resultado);
         }
