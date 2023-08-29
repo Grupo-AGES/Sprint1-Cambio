@@ -7,6 +7,9 @@ let coinSelect = document.getElementById("coinSelect");
 // Seleciona o segundo select de moeda do HTML
 let coinInSelect = document.getElementById("coinInSelect");
 
+//Seleciona o botao de converter do HTML
+let botaoC = document.getElementById("converter");
+
 //pegando o valor de mudanca dos selects de moedas e criando url da api
 function mudancaSelects() {
     const selectedCoin = coinSelect.value;
@@ -34,4 +37,5 @@ axios.get(apiUrl)
     .catch(error => {
         console.error('Error fetching data:', error);
     })};
-    console.log(mudancaSelects())
+
+    botaoC.addEventListener('click', mudancaSelects);
