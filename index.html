@@ -23,11 +23,9 @@
         <h1> Currency Converter</h1>
         <p>Select the currency a converter</p>
     </div>
-    <div class="valor">
-        <input type="text" id="valor" placeholder="Valor a converter">
-    </div>
     <div class="menu1">
         <label for="coins">Converter de:</label>
+        <input type="text" id="valor" placeholder="Valor a converter">
         <select id="coinSelect">
             <option value="" selected disabled>Selecione uma moeda</option>
             <option value="USD">USD</option>
@@ -45,6 +43,7 @@
     </div>
     <div class="menu2">
         <label for="coins">Para:</label>
+        <input id="resultadoDisplay"></input>
         <select id="coinInSelect">
             <option value="" selected disabled>Selecione uma moeda</option>
             <option value="USD">USD</option>
@@ -60,10 +59,7 @@
             <option value="VEF">VEF</option>
         </select>
     </div>
-    <div class="convert">
-        <button id="converter">Converter</button>
-    </div>
-    <div id="resultadoDisplay"></div>
+    
     <script type="application/x-javascript" src="/public/script/scriptCoins.js"></script>
     <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
 </body>
