@@ -26,11 +26,17 @@ function mudancaSelects() {
             const data = response.data;
             for (const currencyPair in data) {
                 const cotacao = data[currencyPair]['bid'];
+                const variacaoMoeda = data[currencyPair]['varBid'];
+                const high = data[currencyPair]['high'];
+                const low = data[currencyPair]['low'];
+                const atual = data[currencyPair]['bid'];
                 const dia = data[currencyPair]['create_date'];
+
+               
                 const resultado = cotacao * valorInput;
 
                 resultadoDisplay.value = `${resultado}`;
-                console.log(`Currency Pair: ${currencyPair}, Cotacao: ${cotacao}, Dia: ${dia}`);
+                console.log(`Currency Pair: ${currencyPair}, Variacao: ${variacaoMoeda}, High: ${high}, Low: ${low}, Valor atual: ${atual}, Data: ${dia}`);
                 console.log("O resultado: " + resultado);
             }
         })
