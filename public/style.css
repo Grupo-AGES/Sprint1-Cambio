@@ -3,11 +3,12 @@
 :root{
     --white: #fff;
     --purple: #5858f5;
-    --blue1: #0128b6;
+    --blue1: #000e41;
     --dark1: #1B2223;
     --gray: #3A4F50;
     --blue2: #3737b8;
-    --cyan1: #0EF6CC;
+    --cyan1: #00d9ff;
+    --blue: #a7b5c2;
 }
 
 #toggle-mode {
@@ -34,19 +35,19 @@
 }
 
 body.light-mode {
-    background-color: white;
-    color: black;
+    background-color: var(--blue);
+    color: var(--blue1);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode {
-    background-color: #121212;
-    color: white;
+    background-color: var(--blue1);
+    color: var(--blue);
     text-shadow: 2px 2px 4px rgb(255, 255, 255);
 }
 
 body{
-    background-color: var(--white);
+    background-color: var(--blue);
     height: 100vh;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -61,7 +62,7 @@ body{
     font-size: 30px;
     display: grid;
     place-items: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 .valor{
@@ -86,7 +87,7 @@ input[type="text"] {
 }
 
 select {
-    width: 300px; /* Defina o valor desejado para a largura */
+    width: 300px; 
     height: 40px;
     margin: 10px;
     border-radius: 20px;
@@ -112,6 +113,33 @@ select {
     max-width: 220px;
     height: 100%;
     align-items: center;
+}
+
+.full-body-1{
+    width: 50%;
+}
+
+.full-body-2{
+    width: 50%;
+    display:grid;
+}
+
+.full-body-3{
+    display: flex;
+    flex-direction: row;
+    
+}
+.my-canvas { 
+    margin-top: 65px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#resultadoDisplay{
+    width: 300px; 
+    height: 40px;
+    margin: 10px;
+    border-radius: 20px;
 }
 
 
