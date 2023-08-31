@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/public/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -19,45 +20,95 @@
         <img class="img-logo" src="public/img/coin.png" alt="Conversor de Moedas."/>
     </div>
     </header>
-    <div class="body">
-        <h1> Currency Converter</h1>
-        <p>Select the currency a converter</p>
-    </div>
-    <div class="menu1">
-        <label for="coins">Converter de:</label>
-        <input type="text" id="valor" placeholder="Valor a converter">
-        <select id="coinSelect">
-            <option value="" selected disabled>Selecione uma moeda</option>
-            <option value="USD">USD</option>
-            <option value="CAD">CAD</option>
-            <option value="EUR">EUR</option>
-            <option value="BRL">BRL</option>
-            <option value="UYU">UYU</option>
-            <option value="JPY">JPY</option>
-            <option value="GBP">GBP</option>
-            <option value="CHF">CHF</option>
-            <option value="CNY">CNY</option>
-            <option value="THB">THB</option>
-            <option value="VEF">VEF</option>
-        </select>
-    </div>
-    <div class="menu2">
-        <label for="coins">Para:</label>
-        <input id="resultadoDisplay"></input>
-        <select id="coinInSelect">
-            <option value="" selected disabled>Selecione uma moeda</option>
-            <option value="USD">USD</option>
-            <option value="CAD">CAD</option>
-            <option value="EUR">EUR</option>
-            <option value="BRL">BRL</option>
-            <option value="UYU">UYU</option>
-            <option value="JPY">JPY</option>
-            <option value="GBP">GBP</option>
-            <option value="CHF">CHF</option>
-            <option value="CNY">CNY</option>
-            <option value="THB">THB</option>
-            <option value="VEF">VEF</option>
-        </select>
+    <div class="full-body-3">
+        <div class="full-body-1">
+            <div class="body">
+                <h1> Currency Converter</h1>
+                <p>Select the currency a converter</p>
+            </div>
+            <div class="menu1">
+                <label for="coins">Converter de:</label>
+                <input type="text" id="valor" placeholder="Valor a converter">
+                <select id="coinSelect">
+                    <option value="" selected disabled>Selecione uma moeda</option>
+                    <option value="USD">USD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="BRL">BRL</option>
+                    <option value="UYU">UYU</option>
+                    <option value="JPY">JPY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CNY">CNY</option>
+                    <option value="THB">THB</option>
+                    <option value="VEF">VEF</option>
+                </select>
+            </div>
+            <div class="menu2">
+                <label for="coins">Para:</label>
+                <input id="resultadoDisplay"></input>
+                <select id="coinInSelect">
+                    <option value="" selected disabled>Selecione uma moeda</option>
+                    <option value="USD">USD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="BRL">BRL</option>
+                    <option value="UYU">UYU</option>
+                    <option value="JPY">JPY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CNY">CNY</option>
+                    <option value="THB">THB</option>
+                    <option value="VEF">VEF</option>
+                </select>
+            </div>
+        </div>
+        <div class="full-body-2">
+            <div id="grafico"></div>
+
+            <canvas id="myChart" class="my-canvas"></canvas>
+            
+            <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var grf = document.getElementById('grafico')
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['BRL', 'USD', 'EUR'],
+                    datasets: [{
+                        label: 'Variação Diária',
+                        data: [ 6, 12, 18, 24],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            </script>
+        </div>
     </div>
     
     <script type="application/x-javascript" src="/public/script/scriptCoins.js"></script>
