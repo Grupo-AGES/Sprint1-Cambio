@@ -66,18 +66,67 @@
         <div class="full-body-2">
             <div id="grafico"></div>
 
+    <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
+
             <canvas id="myChart" class="my-canvas"></canvas>
             
             <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
+               // Seleciona o input do valor dado ao cliente
+let valor = document.getElementById("valor");
+
+// Seleciona o primeiro select de moeda do HTML
+let coinSelect = document.getElementById("coinSelect");
+
+// Seleciona o segundo select de moeda do HTML
+let coinInSelect = document.getElementById("coinInSelect");
+
+//Seleciona div do resultado no HTML
+let resultadoDisplay = document.getElementById("resultadoDisplay");
+
+//pegando o valor de mudanca dos selects de moedas e criando url da api
+function mudancaSelects() {
+    const selectedCoin = coinSelect.value;
+    const selectedCoinIn = coinInSelect.value;
+    const valorInput = valor.value;
+
+    const currencyPair = `${selectedCoin}-${selectedCoinIn}`;
+    const apiUrl = `https://economia.awesomeapi.com.br/json/last/${currencyPair}`;
+
+
+    // Requisitando HTTP para usar axios
+    axios.get(apiUrl)
+        .then(response => {
+            const data = response.data;
+            for (const currencyPair in data) {
+                const cotacao = data[currencyPair]['bid'];
+                const variacaoMoeda = data[currencyPair]['varBid'];
+                const high = data[currencyPair]['high'];
+                const low = data[currencyPair]['low'];
+                const atual = data[currencyPair]['bid'];
+                const dia = data[currencyPair]['create_date'];
+
+               
+                const resultado = cotacao * valorInput;
+                const media1 = high-0.1;
+                const media2 = high-0.16;
+                const media3 = high-0.12;
+                const media4 = high-0.18;
+
+                resultadoDisplay.value = `${resultado}`;
+                console.log(`Currency Pair: ${currencyPair}, Variacao: ${variacaoMoeda}, High: ${high}, Low: ${low}, Valor atual: ${atual}, Data: ${dia}`);
+                console.log("O resultado: " + resultado);
+
+                console.log(high, low, atual, media1, media2, media3, media4)
+            
+                var ctx = document.getElementById('myChart').getContext('2d');
             var grf = document.getElementById('grafico')
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['BRL', 'USD', 'EUR'],
+                    labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
                     datasets: [{
                         label: 'Variação Diária',
-                        data: [ 6, 12, 18, 24],
+                        data: [media2, media1, media4, high, low, media3, atual],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -107,11 +156,22 @@
                     }
                 }
             });
+                return high, low, atual
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+};
+
+valor.addEventListener('input', mudancaSelects);
+coinSelect.addEventListener('change', mudancaSelects);
+coinInSelect.addEventListener('change', mudancaSelects);
+
+            
             </script>
         </div>
     </div>
     
-    <script type="application/x-javascript" src="/public/script/scriptCoins.js"></script>
-    <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
 </body>
 </html>
