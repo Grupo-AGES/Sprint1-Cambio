@@ -70,8 +70,11 @@
 
             <canvas id="myChart" class="my-canvas"></canvas>
             
-            <script>
-               // Seleciona o input do valor dado ao cliente
+    <script>
+// Variavel para salvar grafico
+let myChart;
+
+// Seleciona o input do valor dado ao cliente
 let valor = document.getElementById("valor");
 
 // Seleciona o primeiro select de moeda do HTML
@@ -82,6 +85,14 @@ let coinInSelect = document.getElementById("coinInSelect");
 
 //Seleciona div do resultado no HTML
 let resultadoDisplay = document.getElementById("resultadoDisplay");
+
+//atualizando grafico de acordo com a mudanca de valores
+function atualizarGrafico(dataPoints) {
+    if (myChart) {
+        myChart.data.datasets[0].data = dataPoints;
+        myChart.update();
+    }
+}
 
 //pegando o valor de mudanca dos selects de moedas e criando url da api
 function mudancaSelects() {
@@ -117,51 +128,39 @@ function mudancaSelects() {
                 console.log("O resultado: " + resultado);
 
                 console.log(high, low, atual, media1, media2, media3, media4)
-            
+            // Verifique se o gráfico já existe
+            if (!myChart) {
                 var ctx = document.getElementById('myChart').getContext('2d');
-            var grf = document.getElementById('grafico')
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-             labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
-                    datasets: [{
-                        label: 'Variação Diária',
-                        data: [media2, media1, media4, high, low, media3, atual],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
+                var grf = document.getElementById('grafico');
+                myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
+                        datasets: [{
+                            label: 'Variação Diária',
+                            data: [media2, media1, media4, high, low, media3, atual]
                         }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }
-                }
-            });
-                return high, low, atual
+                });
+            } else {
+                // Atualize os dados do gráfico
+                myChart.data.datasets[0].data = [media2, media1, media4, high, low, media3, atual];
+                myChart.update();
             }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        })
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
 };
 
 valor.addEventListener('input', mudancaSelects);
