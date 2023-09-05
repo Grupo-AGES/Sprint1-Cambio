@@ -43,7 +43,7 @@ body.light-mode {
 body.dark-mode {
     background-color: var(--blue1);
     color: var(--blue);
-    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
 }
 
 body{
@@ -52,9 +52,27 @@ body{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .img-header{
-    display: grid;
-    place-items: center;
+    display: flex;
+}
+
+.img-logo{
+    display: flex;
+    width: 130px;
+    height: auto;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
 }
 
 .body{
@@ -108,14 +126,8 @@ select {
     font-size: 18px; 
 }
 
-.img-logo{
-    display: flex;
-    max-width: 220px;
-    height: 100%;
-    align-items: center;
-}
-
 .full-body-1{
+    display: flex;
     width: 50%;
 }
 
