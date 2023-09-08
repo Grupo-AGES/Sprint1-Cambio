@@ -28,10 +28,9 @@
     </header>
     <div class="menu1">
         <label class="h3-menu" for="coins">Converter de:</label>
-        <input type="text" id="valor" placeholder="Valor a converter">
+        <input type="text" id="valor" placeholder="Valor a converter" value="1">
         <select id="coinSelect">
-            <option value="BRL" selected disabled>Selecione uma moeda</option>
-            <option value="USD">Dolar EUA(USD)</option>
+            <option value="USD" selected>Dolar EUA(USD)</option>
             <option value="CAD">Dolar CAD(CAD)</option>
             <option value="EUR">Euro(EUR)</option>
             <option value="BRL">Real(BRL)</option>
@@ -46,7 +45,7 @@
         <div class="full-body-1">
             <div class="menu2">
                 <label class="h3-menu" for="coins">Para Moeda 1:</label>
-                <input id="resultadoDisplay"></input>
+                <input id="resultadoDisplay" value=`${resultado}`></input>
                 <select id="coinInSelect">
                     <option value="USD">Dolar EUA(USD)</option>
                     <option value="CAD">Dolar CAD(CAD)</option>
@@ -61,7 +60,7 @@
             </div>
             <div class="menu3">
                 <label class="h3-menu" for="coins">Para Moeda 2:</label>
-                <input id="resultadoDois"></input>
+                <input id="resultadoDois" value=`${resultado}`></input>
                 <select id="coinTreeSelect">
                     <option value="USD">Dolar EUA(USD)</option>
                     <option value="CAD">Dolar CAD(CAD)</option>
