@@ -22,11 +22,13 @@
         <div class="img-header">
             <img class="img-logo" src="public/img/coin.png" alt="Conversor de Moedas." />
         </div>
+        <div class="title">
+            <h1> Currency Converter</h1>
+        </div>
     </header>
     <div class="full-body-3">
         <div class="full-body-1">
             <div class="body">
-                <h1> Currency Converter</h1>
                 <p>Select the currency a converter</p>
             </div>
             <div class="menu1">
@@ -87,12 +89,15 @@
             </div>
         </div>
 
-        <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
+            <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
 
-        <script>
-            // Variaveis para salvar graficos
+            <canvas id="myChart" class="my-canvas"></canvas>
+
+            <script>
+                // Variaveis para salvar graficos
             let myChart1;
             let myChart2;
+
 
             // Seleciona o input do valor dado ao cliente
             let valor = document.getElementById("valor");
@@ -259,6 +264,8 @@
 
     </div>
 
+
 </body>
+
 
 </html>
