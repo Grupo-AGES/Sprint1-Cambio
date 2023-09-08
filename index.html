@@ -26,29 +26,26 @@
             <h1> Currency Converter</h1>
         </div>
     </header>
+    <div class="menu1">
+        <label class="h3-menu" for="coins">Converter de:</label>
+        <input type="text" id="valor" placeholder="Valor a converter">
+        <select id="coinSelect">
+            <option value="BRL" selected disabled>Selecione uma moeda</option>
+            <option value="USD">Dolar EUA(USD)</option>
+            <option value="CAD">Dolar CAD(CAD)</option>
+            <option value="EUR">Euro(EUR)</option>
+            <option value="BRL">Real(BRL)</option>
+            <option value="UYU">Peso UY(UYU)</option>
+            <option value="JPY">Iene(JPY)</option>
+            <option value="GBP">Libra(GBP)</option>
+            <option value="CHF">Franco Suico(CHF)</option>
+            <option value="CNY">Yuan Chines(CNY)</option>
+        </select>
+    </div>
     <div class="full-body-3">
         <div class="full-body-1">
-            <div class="body">
-                <p>Select the currency a converter</p>
-            </div>
-            <div class="menu1">
-                <label for="coins">Converter de:</label>
-                <input type="text" id="valor" placeholder="Valor a converter">
-                <select id="coinSelect">
-                    <option value="BRL" selected disabled>Selecione uma moeda</option>
-                    <option value="USD">Dolar EUA(USD)</option>
-                    <option value="CAD">Dolar CAD(CAD)</option>
-                    <option value="EUR">Euro(EUR)</option>
-                    <option value="BRL">Real(BRL)</option>
-                    <option value="UYU">Peso UY(UYU)</option>
-                    <option value="JPY">Iene(JPY)</option>
-                    <option value="GBP">Libra(GBP)</option>
-                    <option value="CHF">Franco Suico(CHF)</option>
-                    <option value="CNY">Yuan Chines(CNY)</option>
-                </select>
-            </div>
             <div class="menu2">
-                <label for="coins">Para:</label>
+                <label class="h3-menu" for="coins">Para Moeda 1:</label>
                 <input id="resultadoDisplay"></input>
                 <select id="coinInSelect">
                     <option value="USD" selected disabled>Selecione uma moeda</option>
@@ -64,7 +61,7 @@
                 </select>
             </div>
             <div class="menu3">
-                <label for="coins">Para:</label>
+                <label class="h3-menu" for="coins">Para Moeda 2:</label>
                 <input id="resultadoDois"></input>
                 <select id="coinTreeSelect">
                     <option value="GBP" selected disabled>Selecione uma moeda</option>
@@ -80,189 +77,188 @@
                 </select>
             </div>
         </div>
-        <div class="full-body-2">
-            <div id="grafico1">
-                <canvas id="myChart1" class="my-canvas1"></canvas>
-            </div>
-            <div id="grafico2">
-                <canvas id="myChart2" class="my-canvas2"></canvas>
-            </div>
+    <div class="full-body-2">
+        <div id="grafico1">
+            <canvas id="myChart1" class="my-canvas1"></canvas>
         </div>
+        <div id="grafico2">
+            <canvas id="myChart2" class="my-canvas2"></canvas>
+        </div>
+    </div>
 
-            <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
+    <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
 
-            <canvas id="myChart" class="my-canvas"></canvas>
-
-            <script>
-                // Variaveis para salvar graficos
-            let myChart1;
-            let myChart2;
-
-
-            // Seleciona o input do valor dado ao cliente
-            let valor = document.getElementById("valor");
-
-            // Seleciona o primeiro select de moeda do HTML
-            let coinSelect = document.getElementById("coinSelect");
-
-            // Seleciona o segundo select de moeda do HTML
-            let coinInSelect = document.getElementById("coinInSelect");
-
-            //Seleciona input do resultado no HTML
-            let resultadoDisplay = document.getElementById("resultadoDisplay");
-
-            //Seleciona input do resultado 2 do HTML
-            let resultadoDois = document.getElementById("resultadoDois");
-
-            //Seleciona o terceiro select de moeda do HTML
-            let coinTreeSelect = document.getElementById("coinTreeSelect");
-
-            //atualizando graficos de acordo com a mudanca de valores
-            function atualizarGrafico1(dataPoints) {
-                    if (myChart1) {
-                        myChart1.data.datasets[0].data = dataPoints;
-                        myChart1.update();
-                    }
-                    
-                }
-                
-            function atualizarGrafico2(dataPoints){
-            if(myChart2){
-                        myChart2.data.datasets[0].data = dataPoints;
-                        myChart2.update();  
-                    }
-                }
-
-            //pegando o valor de mudanca dos selects de moedas e criando url da api
-            function mudancaSelects() {
-                const selectedCoin = coinSelect.value;
-                const selectedCoinIn = coinInSelect.value;
-                const selectedCoinTree = coinTreeSelect.value;
-                const valorInput2 = resultadoDisplay.value;
-                const valorInput3 = resultadoDois.value;
-                const valorInput1 = valor.value;
-
-                const currencyPair1 = `${selectedCoin}-${selectedCoinIn}`;
-                const currencyPair2 = `${selectedCoin}-${selectedCoinTree}`;
-                const apiUrl1 = `https://economia.awesomeapi.com.br/json/last/${currencyPair1}`;
-                const apiUrl2 = `https://economia.awesomeapi.com.br/json/last/${currencyPair2}`;
-
-                // Requisitando HTTP para usar axios api1
-                axios.get(apiUrl1)
-                        .then(response => {
-                            const data = response.data;
-                            for (const currencyPair in data) {
-                                const cotacao = data[currencyPair]['bid'];
-                                const variacaoMoeda = data[currencyPair]['varBid'];
-                                const high1 = data[currencyPair]['high'];
-                                const low1 = data[currencyPair]['low'];
-                                const atual1 = data[currencyPair]['bid'];
-                                const dia = data[currencyPair]['create_date'];
+    <script>
+        // Variaveis para salvar graficos
+        let myChart1;
+        let myChart2;
 
 
-                                const resultado = cotacao * valorInput1;
-                                const media1_1 = high1 - 0.1;
-                                const media1_2 = high1 - 0.16;
-                                const media1_3 = high1 - 0.12;
-                                const media1_4 = high1 - 0.18;
+        // Seleciona o input do valor dado ao cliente
+        let valor = document.getElementById("valor");
 
-                                resultadoDisplay.value = `${resultado}`;
+        // Seleciona o primeiro select de moeda do HTML
+        let coinSelect = document.getElementById("coinSelect");
 
-                                // Verifique se o gráfico já existe
-                                if (!myChart1) {
-                                    var ctx = document.getElementById('myChart1').getContext('2d');
-                                    var grf = document.getElementById('grafico1');
-                                    myChart1 = new Chart(ctx, {
-                                        type: 'line',
-                                        data: {
-                                            labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
-                                            datasets: [{
-                                                label: 'Variação Diária',
-                                                data: [media1_2, media1_1, media1_4, high1, low1, media1_3, atual1]
-                                            }]
-                                        },
-                                        options: {
-                                            scales: {
-                                                yAxes: [{
-                                                    ticks: {
-                                                        beginAtZero: true
-                                                    }
-                                                }]
+        // Seleciona o segundo select de moeda do HTML
+        let coinInSelect = document.getElementById("coinInSelect");
+
+        //Seleciona input do resultado no HTML
+        let resultadoDisplay = document.getElementById("resultadoDisplay");
+
+        //Seleciona input do resultado 2 do HTML
+        let resultadoDois = document.getElementById("resultadoDois");
+
+        //Seleciona o terceiro select de moeda do HTML
+        let coinTreeSelect = document.getElementById("coinTreeSelect");
+
+        //atualizando graficos de acordo com a mudanca de valores
+        function atualizarGrafico1(dataPoints) {
+            if (myChart1) {
+                myChart1.data.datasets[0].data = dataPoints;
+                myChart1.update();
+            }
+
+        }
+
+        function atualizarGrafico2(dataPoints) {
+            if (myChart2) {
+                myChart2.data.datasets[0].data = dataPoints;
+                myChart2.update();
+            }
+        }
+
+        //pegando o valor de mudanca dos selects de moedas e criando url da api
+        function mudancaSelects() {
+            const selectedCoin = coinSelect.value;
+            const selectedCoinIn = coinInSelect.value;
+            const selectedCoinTree = coinTreeSelect.value;
+            const valorInput2 = resultadoDisplay.value;
+            const valorInput3 = resultadoDois.value;
+            const valorInput1 = valor.value;
+
+            const currencyPair1 = `${selectedCoin}-${selectedCoinIn}`;
+            const currencyPair2 = `${selectedCoin}-${selectedCoinTree}`;
+            const apiUrl1 = `https://economia.awesomeapi.com.br/json/last/${currencyPair1}`;
+            const apiUrl2 = `https://economia.awesomeapi.com.br/json/last/${currencyPair2}`;
+
+            // Requisitando HTTP para usar axios api1
+            axios.get(apiUrl1)
+                .then(response => {
+                    const data = response.data;
+                    for (const currencyPair in data) {
+                        const cotacao = data[currencyPair]['bid'];
+                        const variacaoMoeda = data[currencyPair]['varBid'];
+                        const high1 = data[currencyPair]['high'];
+                        const low1 = data[currencyPair]['low'];
+                        const atual1 = data[currencyPair]['bid'];
+                        const dia = data[currencyPair]['create_date'];
+
+
+                        const resultado = cotacao * valorInput1;
+                        const media1_1 = high1 - 0.1;
+                        const media1_2 = high1 - 0.16;
+                        const media1_3 = high1 - 0.12;
+                        const media1_4 = high1 - 0.18;
+
+                        resultadoDisplay.value = `${resultado}`;
+
+                        // Verifique se o gráfico já existe
+                        if (!myChart1) {
+                            var ctx = document.getElementById('myChart1').getContext('2d');
+                            var grf = document.getElementById('grafico1');
+                            myChart1 = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
+                                    datasets: [{
+                                        label: 'Variação Diária Moeda 1',
+                                        data: [media1_2, media1_1, media1_4, high1, low1, media1_3, atual1]
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
                                             }
-                                        }
-                                    });
-                                } else {
-                                    // Atualize os dados do gráfico
-                                    atualizarGrafico1([media1_2, media1_1, media1_4, high1, low1, media1_3, atual1], myChart1);
+                                        }]
+                                    }
                                 }
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
-                        });
+                            });
+                        } else {
+                            // Atualize os dados do gráfico
+                            atualizarGrafico1([media1_2, media1_1, media1_4, high1, low1, media1_3, atual1], myChart1);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
 
-                        // Requisitando HTTP para usar axios para api2
-                    axios.get(apiUrl2)
-                        .then(response => {
-                            const data = response.data;
-                            for (const currencyPair in data) {
-                                const cotacao = data[currencyPair]['bid'];
-                                const variacaoMoeda = data[currencyPair]['varBid'];
-                                const high2 = data[currencyPair]['high'];
-                                const low2 = data[currencyPair]['low'];
-                                const atual2 = data[currencyPair]['bid'];
-                                const dia = data[currencyPair]['create_date'];
+            // Requisitando HTTP para usar axios para api2
+            axios.get(apiUrl2)
+                .then(response => {
+                    const data = response.data;
+                    for (const currencyPair in data) {
+                        const cotacao = data[currencyPair]['bid'];
+                        const variacaoMoeda = data[currencyPair]['varBid'];
+                        const high2 = data[currencyPair]['high'];
+                        const low2 = data[currencyPair]['low'];
+                        const atual2 = data[currencyPair]['bid'];
+                        const dia = data[currencyPair]['create_date'];
 
 
-                                const resultado = cotacao * valorInput1;
-                                const media2_1 = high2 - 0.1;
-                                const media2_2 = high2 - 0.16;
-                                const media2_3 = high2 - 0.12;
-                                const media2_4 = high2 - 0.18;
+                        const resultado = cotacao * valorInput1;
+                        const media2_1 = high2 - 0.1;
+                        const media2_2 = high2 - 0.16;
+                        const media2_3 = high2 - 0.12;
+                        const media2_4 = high2 - 0.18;
 
-                                resultadoDois.value = `${resultado}`;
+                        resultadoDois.value = `${resultado}`;
 
-                                // Verifique se o gráfico já existe
-                                if (!myChart2) {
-                                    var ctx = document.getElementById('myChart2').getContext('2d');
-                                    var grf = document.getElementById('grafico2');
-                                    myChart2 = new Chart(ctx, {
-                                        type: 'line',
-                                        data: {
-                                            labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
-                                            datasets: [{
-                                                label: 'Variação Diária',
-                                                data: [media2_2, media2_1, media2_4, high2, low2, media2_3, atual2]
-                                            }]
-                                        },
-                                        options: {
-                                            scales: {
-                                                yAxes: [{
-                                                    ticks: {
-                                                        beginAtZero: true
-                                                    }
-                                                }]
+                        // Verifique se o gráfico já existe
+                        if (!myChart2) {
+                            var ctx = document.getElementById('myChart2').getContext('2d');
+                            var grf = document.getElementById('grafico2');
+                            myChart2 = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['a 4h', 'a 3h', 'a 2h', 'a 1h', 'a 30min', 'a 15min', 'agora'],
+                                    datasets: [{
+                                        label: 'Variação Diária Moeda 2',
+                                        data: [media2_2, media2_1, media2_4, high2, low2, media2_3, atual2]
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
                                             }
-                                        }
-                                    });
-                                } else {
-                                    atualizarGrafico2([media2_2, media2_1, media2_4, high2, low2, media2_3, atual2], myChart2);
+                                        }]
+                                    }
                                 }
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
-                        });
-            };
-            valor.addEventListener('input', mudancaSelects);
-            coinTreeSelect.addEventListener('change', mudancaSelects);
-            coinSelect.addEventListener('change', mudancaSelects);
-            coinInSelect.addEventListener('change', mudancaSelects);
+                            });
+                        } else {
+                            atualizarGrafico2([media2_2, media2_1, media2_4, high2, low2, media2_3, atual2], myChart2);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        };
+        valor.addEventListener('input', mudancaSelects);
+        coinTreeSelect.addEventListener('change', mudancaSelects);
+        coinSelect.addEventListener('change', mudancaSelects);
+        coinInSelect.addEventListener('change', mudancaSelects);
 
 
-        </script>
+    </script>
 
     </div>
+</div>
 
 
 </body>
