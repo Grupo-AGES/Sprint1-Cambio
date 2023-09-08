@@ -132,7 +132,8 @@ select {
 }
 
 .full-body-2{
-    width: 50%;
+    width: 1000vh;
+    height: auto;
     display:grid;
 }
 
@@ -142,8 +143,7 @@ select {
     
 }
 .my-canvas { 
-    margin-top: 65px;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: white;
 }
 
