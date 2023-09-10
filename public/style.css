@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato');
 
 :root{
-    --white: #fff;
+    --white: #f0e0e0;
     --purple: #5858f5;
-    --blue1: #000e41;
+    --blue1: #000720;
     --dark1: #1B2223;
     --gray: #3A4F50;
     --blue2: #3737b8;
     --cyan1: #00d9ff;
     --blue: #a7b5c2;
+    --greenL: #adf8d9;
+    --greenD:#0b1a05;
 }
 
 #toggle-mode {
@@ -35,14 +37,14 @@
 }
 
 body.light-mode {
-    background-color: var(--blue);
+    background-color: var(--greenL);
     color: var(--blue1);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode {
     background-color: var(--blue1);
-    color: var(--blue);
+    color: var(--greenL);
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
 }
 
@@ -75,113 +77,73 @@ header{
     margin-left: 20px;
 }
 
-.body{
-    font-family: 'Lato';
-    font-size: 30px;
-    display: grid;
-    place-items: center;
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
-}
-
-
-
-
-.menu1{
-    font-family: 'Lato';
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    margin: 10px;
-    border-radius: 20px;
-}
-
 select {
-    width: 300px; 
+    width: 20vw; 
     height: 40px;
-    margin: 10px;
-    border-radius: 20px;
-  }
+    border-radius: 8px;
+}
 
-.menu2{
+.menu{
     font-family: 'Lato';
     display: flex;
     place-items: center;
     font-size: 20px;
-    margin-top: 2vw;
-}
-
-.menu3 {
-    font-family: 'lato';
-    display: flex;
-    place-items: center;
-    font-size: 20px;
-    margin-top: 13vw;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .h3-menu {
     display: flex;
-    width: 8vw;
+    width: 20vw;
     height: auto;
-    margin: 5px;
-    justify-content: flex-end;
+    margin: 15px;
+    justify-content: center;
 }
 
 .full-body-1{
     display: flex;
-    flex-direction: column;
-    width: 35%;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .full-body-2{
     display: flex;
-    flex-direction: column;
-    width: 65%;
-    height: auto;
-
+    flex-direction: row;
+    width: 100vw;
+    margin-top: 30px;
+    justify-content: center;
 }
 
 .full-body-3{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
+
 .my-canvas1 { 
     border-radius: 20px;
     background-color: white;
-    margin: 10px;
 }
 
 .my-canvas2 { 
     border-radius: 20px;
     background-color: white;
-    margin: 10px;
 }
 
 input{
     font-size: 15px;
-    margin: 10px;
-    height: auto;
-    border-radius: 20px;
+    height: 20px;
+    width: 19vw;
+    border-radius: 8px;
 }
 
 #grafico1 {
-    display: flex;
-    justify-content: end;
-    margin-left: 20vw;
-    margin-top: 5vw;
     width: 60vh;
     height: auto;
+    margin-right: 5vw; ;
 }
 
 #grafico2 {
-    display: flex;
-    justify-content: end;
-    margin-left: 20vw;
-    margin-top: 5vw;
     width: 60vh;
     height: auto;
+    margin-left: 5vw;
 }
-
-
-
-
-

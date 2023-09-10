@@ -26,26 +26,26 @@
             <h1> Currency Converter</h1>
         </div>
     </header>
-    <div class="menu1">
-        <label class="h3-menu" for="coins">Converter de:</label>
-        <input type="text" id="valor" placeholder="Valor a converter" value="1">
-        <select id="coinSelect">
-            <option value="USD" selected>Dolar EUA(USD)</option>
-            <option value="CAD">Dolar CAD(CAD)</option>
-            <option value="EUR">Euro(EUR)</option>
-            <option value="BRL">Real(BRL)</option>
-            <option value="UYU">Peso UY(UYU)</option>
-            <option value="JPY">Iene(JPY)</option>
-            <option value="GBP">Libra(GBP)</option>
-            <option value="CHF">Franco Suico(CHF)</option>
-            <option value="CNY">Yuan Chines(CNY)</option>
-        </select>
-    </div>
+
     <div class="full-body-3">
         <div class="full-body-1">
-            <div class="menu2">
+            <div class="menu" id="menu1">
+                <label class="h3-menu" for="coins">Converter de:</label>
+                <select id="coinSelect">
+                    <option value="USD" selected>Dolar EUA(USD)</option>
+                    <option value="CAD">Dolar CAD(CAD)</option>
+                    <option value="EUR">Euro(EUR)</option>
+                    <option value="BRL">Real(BRL)</option>
+                    <option value="UYU">Peso UY(UYU)</option>
+                    <option value="JPY">Iene(JPY)</option>
+                    <option value="GBP">Libra(GBP)</option>
+                    <option value="CHF">Franco Suico(CHF)</option>
+                    <option value="CNY">Yuan Chines(CNY)</option>
+                </select>
+                <input type="text" id="valor" placeholder="Valor a converter" value="1">
+            </div>
+            <div class="menu" id="menu2">
                 <label class="h3-menu" for="coins">Para Moeda 1:</label>
-                <input id="resultadoDisplay" value=`${resultado}`></input>
                 <select id="coinInSelect">
                     <option value="USD">Dolar EUA(USD)</option>
                     <option value="CAD">Dolar CAD(CAD)</option>
@@ -57,10 +57,10 @@
                     <option value="CHF">Franco Suico(CHF)</option>
                     <option value="CNY">Yuan Chines(CNY)</option>
                 </select>
+                <input id="resultadoDisplay" value=`${resultado}`></input>
             </div>
-            <div class="menu3">
+            <div class="menu" id="menu3">
                 <label class="h3-menu" for="coins">Para Moeda 2:</label>
-                <input id="resultadoDois" value=`${resultado}`></input>
                 <select id="coinTreeSelect">
                     <option value="USD">Dolar EUA(USD)</option>
                     <option value="CAD">Dolar CAD(CAD)</option>
@@ -72,16 +72,17 @@
                     <option value="CHF">Franco Suico(CHF)</option>
                     <option value="CNY" selected>Yuan Chines(CNY)</option>
                 </select>
+                <input id="resultadoDois" value=`${resultado}`></input>
             </div>
         </div>
-    <div class="full-body-2">
-        <div id="grafico1">
-            <canvas id="myChart1" class="my-canvas1"></canvas>
+        <div class="full-body-2">
+            <div id="grafico1">
+                <canvas id="myChart1" class="my-canvas1"></canvas>
+            </div>
+            <div id="grafico2">
+                <canvas id="myChart2" class="my-canvas2"></canvas>
+            </div>
         </div>
-        <div id="grafico2">
-            <canvas id="myChart2" class="my-canvas2"></canvas>
-        </div>
-    </div>
 
         <script type="application/x-javascript" src="/public/script/scriptNoturno.js"></script>
 
@@ -100,23 +101,23 @@
             let myChart2;
 
 
-        // Seleciona o input do valor dado ao cliente
-        let valor = document.getElementById("valor");
+            // Seleciona o input do valor dado ao cliente
+            let valor = document.getElementById("valor");
 
-        // Seleciona o primeiro select de moeda do HTML
-        let coinSelect = document.getElementById("coinSelect");
+            // Seleciona o primeiro select de moeda do HTML
+            let coinSelect = document.getElementById("coinSelect");
 
-        // Seleciona o segundo select de moeda do HTML
-        let coinInSelect = document.getElementById("coinInSelect");
+            // Seleciona o segundo select de moeda do HTML
+            let coinInSelect = document.getElementById("coinInSelect");
 
-        //Seleciona input do resultado no HTML
-        let resultadoDisplay = document.getElementById("resultadoDisplay");
+            //Seleciona input do resultado no HTML
+            let resultadoDisplay = document.getElementById("resultadoDisplay");
 
-        //Seleciona input do resultado 2 do HTML
-        let resultadoDois = document.getElementById("resultadoDois");
+            //Seleciona input do resultado 2 do HTML
+            let resultadoDois = document.getElementById("resultadoDois");
 
-        //Seleciona o terceiro select de moeda do HTML
-        let coinTreeSelect = document.getElementById("coinTreeSelect");
+            //Seleciona o terceiro select de moeda do HTML
+            let coinTreeSelect = document.getElementById("coinTreeSelect");
 
             //atualizando graficos de acordo com a mudanca de valores
             function atualizarGrafico1(dataPoints) {
@@ -134,19 +135,19 @@
                 }
             }
 
-        //pegando o valor de mudanca dos selects de moedas e criando url da api
-        function mudancaSelects() {
-            const selectedCoin = coinSelect.value;
-            const selectedCoinIn = coinInSelect.value;
-            const selectedCoinTree = coinTreeSelect.value;
-            const valorInput2 = resultadoDisplay.value;
-            const valorInput3 = resultadoDois.value;
-            const valorInput1 = valor.value;
+            //pegando o valor de mudanca dos selects de moedas e criando url da api
+            function mudancaSelects() {
+                const selectedCoin = coinSelect.value;
+                const selectedCoinIn = coinInSelect.value;
+                const selectedCoinTree = coinTreeSelect.value;
+                const valorInput2 = resultadoDisplay.value;
+                const valorInput3 = resultadoDois.value;
+                const valorInput1 = valor.value;
 
-            const currencyPair1 = `${selectedCoin}-${selectedCoinIn}`;
-            const currencyPair2 = `${selectedCoin}-${selectedCoinTree}`;
-            const apiUrl1 = `https://economia.awesomeapi.com.br/json/last/${currencyPair1}`;
-            const apiUrl2 = `https://economia.awesomeapi.com.br/json/last/${currencyPair2}`;
+                const currencyPair1 = `${selectedCoin}-${selectedCoinIn}`;
+                const currencyPair2 = `${selectedCoin}-${selectedCoinTree}`;
+                const apiUrl1 = `https://economia.awesomeapi.com.br/json/last/${currencyPair1}`;
+                const apiUrl2 = `https://economia.awesomeapi.com.br/json/last/${currencyPair2}`;
 
                 // Requisitando HTTP para usar axios api1
                 axios.get(apiUrl1)
@@ -261,10 +262,10 @@
             coinInSelect.addEventListener('change', mudancaSelects);
 
 
-    </script>
+        </script>
 
     </div>
-</div>
+    </div>
 
 
 </body>
